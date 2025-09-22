@@ -31,7 +31,7 @@ services:
       # --- Servicio que apunta a Odoo ---
       - "traefik.http.services.odoo-service.loadbalancer.server.port=8069"
     networks:
-      - mirapana_net
+      - net_service
     restart: unless-stopped
   db:
     image: postgres:15
@@ -44,12 +44,12 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
     networks:
-      - mirapana_net
+      - net_service
       
 volumes:
   db_data:
   odoo_data:
 
 networks:
-  mirapana_net:
+  net_service:
     external: true
