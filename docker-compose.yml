@@ -14,7 +14,7 @@ services:
       - USER=odoo
       - PASSWORD=qwerty76%&/
       - PROXY_MODE=True
-      - WEB_BASE_URL=https://mirapana.com
+      - WEB_BASE_URL=https://xservice.store
     volumes:
       - odoo_data:/var/lib/odoo
     labels:
@@ -22,11 +22,11 @@ services:
       - "traefik.enable=true"
       # --- Regla para HTTP (redirección) ---
       - "traefik.http.routers.odoo-http.entrypoints=web"
-      - "traefik.http.routers.odoo-http.rule=Host(`mirapana.com`)"
+      - "traefik.http.routers.odoo-http.rule=Host(`xservice.store`)"
       - "traefik.http.routers.odoo-http.middlewares=https-redirect"
       # --- Regla para HTTPS ---
       - "traefik.http.routers.odoo-https.entrypoints=websecure"
-      - "traefik.http.routers.odoo-https.rule=Host(`mirapana.com`)"
+      - "traefik.http.routers.odoo-https.rule=Host(`xservice.store`)"
       - "traefik.http.routers.odoo-https.tls.certresolver=letsencrypt"
       # --- Servicio que apunta a Odoo ---
       - "traefik.http.services.odoo-service.loadbalancer.server.port=8069"
